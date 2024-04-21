@@ -5,13 +5,14 @@ module.exports = {
     "./*.php",
     "./note/**/*.php",
     "./inc/**/*.php",
+    "./js/**/*.js",
     './node_modules/preline/dist/*.js',
   ],
   theme: {
   },
   plugins: [
-    require('preline/plugin'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
+    require('preline/plugin'),
   ],
 }
