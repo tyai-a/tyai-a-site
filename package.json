@@ -15,7 +15,6 @@
     "tailwindcss": "^3.4.3"
   },
   "dependencies": {
-    "@preline/scrollspy": "^2.1.0",
     "preline": "^2.1.0"
   }
 }
