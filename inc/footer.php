@@ -14,5 +14,4 @@
 	</div>
 </footer>
 
-<script src="/node_modules/preline/dist/preline.js"></script>
-</body>
+<script src="/js/preline.js"></script>
