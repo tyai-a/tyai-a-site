@@ -54,4 +54,5 @@
 </main>
 <!-- ========== END MAIN CONTENT ========== -->
 <?php include($root.'/inc/footer.php'); ?>
+</body>
 </html>
