@@ -17,45 +17,53 @@
 <?php include($root.'/inc/header.php'); ?>
 <?php include($root.'/inc/content-header.php'); ?>
 
-<div class="max-w-[70rem] mx-auto">
+<div class="border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+<div class="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 py-5 lg:px-8">
+  <ol class="flex items-center whitespace-nowrap">
+    <li class="inline-flex items-center">
+      <a class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:focus:text-blue-500" href="/">
+        トップページ
+      </a>
+      <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"></path>
+      </svg>
+    </li>
+    <li class="inline-flex items-center">
+      <a class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:focus:text-blue-500" href="/note/">
+      備忘録
+      </a>
+      <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"></path>
+      </svg>
+    </li>
+    <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200" aria-current="page">
+      記事名
+    </li>
+  </ol>
+</div>
+</div>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main id="content" class="max-w-[70rem] mx-auto">
 
   <!-- Content -->
   <div class="flex relative w-full">
 
-    <!-- Sidebar Toggle -->
-    <div class="sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 md:px-8 lg:hidden dark:bg-slate-900 dark:border-gray-700">
-    <div class="max-w-3xl mx-auto py-2">
-      <!-- Navigation Toggle -->
-      <button type="button" class="flex justify-between gap-x-2 items-center w-full text-gray-500 hover:text-gray-600" data-hs-overlay="#docs-sidebar" aria-controls="docs-sidebar" aria-label="Toggle navigation">
-        <span class="text-sm">Toggle Navigation</span>
-        <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
-      </button>
-      <!-- End Navigation Toggle -->
-    </div>
-  </div>
-  <!-- End Sidebar Toggle -->
-
   <!-- Sidebar -->
-  <aside id="docs-sidebar" class="sm:w-1/5">
-    <div id="docs-sidebar-inner" class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden sticky top-0 inset-x-0 top-0 start-0 bottom-0 z-[60] w-full bg-white border-e border-gray-200 dark:border-gray-700 py-10 px-8 overflow-y-auto lg:block lg:translate-x-0 lg:top-0 lg:end-auto lg:bottom-0 lg:start-[max(0px,calc(50%-45rem))] lg:z-10 d[&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 dark:bg-gray-800">
-
-    <!-- Navigation Toggle -->
-    <button type="button" class="ms-auto flex justify-end lg:hidden text-gray-500 hover:text-gray-600" data-hs-overlay="#docs-sidebar" aria-controls="docs-sidebar" aria-label="Toggle navigation">
-      <span class="sr-only">Toggle Navigation</span>
-      <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-    </button>
-    <!-- End Navigation Toggle -->
+  <aside id="docs-sidebar" class="hidden lg:block lg:w-1/5">
+    <div id="docs-sidebar-inner" class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden sticky z-[60] w-full bg-white border-e border-gray-200 dark:border-gray-700 pe-8 py-10 overflow-y-auto lg:block lg:translate-x-0 lg:top-12 lg:end-auto lg:bottom-0 lg:start-[max(0px,calc(50%-45rem))] lg:z-10 d[&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 dark:bg-gray-800">
 
     <!-- Nav -->
-    <nav id="sidebar-nav" class="relative space-y-8">
+    <nav 
+      id="sidebar-nav"
+      class="relative space-y-8"
+    >
       <h5 class="mb-3 text-sm font-semibold text-slate-900 dark:text-slate-200">目次</h5>
-      <ul id="toc" class="ms-0.5 space-y-2 border-s-2 border-slate-100 dark:border-slate-800" data-hs-scrollspy="#scrollspy">
-        <li><a class="block py-1 ps-4 -ms-px border-s-2 border-transparent text-sm text-slate-700 hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300 hs-scrollspy-active:font-medium hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400 active" href="#first">First</a></li>
-        <li><a class="block py-1 ps-4 -ms-px border-s-2 border-transparent text-sm text-slate-700 hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300 hs-scrollspy-active:font-medium hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400" href="#second">Second</a></li>
-        <li><a class="block py-1 ps-4 -ms-px border-s-2 border-transparent text-sm text-slate-700 hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300 hs-scrollspy-active:font-medium hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400" href="#third">Third</a></li>
-        <li><a class="block py-1 ps-4 -ms-px border-s-2 border-transparent text-sm text-slate-700 hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300 hs-scrollspy-active:font-medium hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400" href="#fourth">Fourth</a></li>
-        <li><a class="block py-1 ps-4 -ms-px border-s-2 border-transparent text-sm text-slate-700 hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300 hs-scrollspy-active:font-medium hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400" href="#fifth">Fifth</a></li>
-        <li><a class="block py-1 ps-4 -ms-px border-s-2 border-transparent text-sm text-slate-700 hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300 hs-scrollspy-active:font-medium hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400" href="#sixth">Sixth</a></li>
+      <ul 
+        id="toc"
+        class="ms-0.5 space-y-2 border-s-2 border-slate-100 dark:border-slate-800 [--scrollspy-offset:0] md:[--scrollspy-offset:-220]"
+        data-hs-scrollspy="#article-body"
+      >
       </ul>
     </nav>
     <!-- Nav -->
@@ -65,8 +73,24 @@
   </aside>
   <!-- End Sidebar -->
 
-  <div class="sm:w-4/5">
-    <article id="article-body" class="py-10 px-8 max-w-none prose dark:prose-invert">
+<div class="w-full lg:w-4/5">
+<article
+  id="article-body"
+  class="py-10 px-8 max-w-none prose dark:prose-invert"
+>
+
+<section class="mb-8">
+<h1 class="font-bold break-normal text-gray-900 dark:text-white pb-2 text-3xl md:text-4xl mb-0">Ubuntu 22.04LTS で /cgi-bin/ 下のHTMLファイルを開くと500エラーとなる問題を解決</h1>
+<div class="flex flex-col sm:flex-row gap-1 sm:gap-3 text-sm md:text-base font-normal text-gray-600 dark:text-gray-400 mt-3">
+  <time class="flex gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-cw w-5"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+    更新日: 2024年4月10日04:21
+  </time>
+  <time class="flex gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock-9 w-5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 7.5 12"/></svg>公開日: 2024年4月10日 03:51
+  </time>
+</div>
+</section>
 
 <p>Ubuntu 22.04.4 にSATA接続のSSDを増設しました。
 データを保存できるストレージとして使用できるようにしてみます。</p>
@@ -141,6 +165,8 @@ GNU Parted へようこそ！ コマンド一覧を見るには 'help' と入力
 開始? 0%
 終了? 100%
 </code></pre>
+
+<h3>H3テスト</h2>
 
 <ul>
 <li>パーティションの名称は空白でも問題ありません。ここではssd1と名付けました。</li>
@@ -275,8 +301,8 @@ UUID=****-*****-***** /mnt/storage ext4 defaults 0 1
   </div>
 
   </div>
-</div>
-<!-- End Content -->
+</main>
+<!-- ========== END MAIN CONTENT ========== -->
 
 <?php include($root.'/inc/footer.php'); ?>
 </body>
