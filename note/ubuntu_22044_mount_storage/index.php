@@ -50,8 +50,8 @@
   <div class="flex relative w-full">
 
   <!-- Sidebar -->
-  <aside id="docs-sidebar" class="hidden lg:block lg:w-1/5">
-    <div id="docs-sidebar-inner" class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden sticky z-[60] w-full bg-white border-e border-gray-200 dark:border-gray-700 pe-8 py-10 overflow-y-auto lg:block lg:translate-x-0 lg:top-12 lg:end-auto lg:bottom-0 lg:start-[max(0px,calc(50%-45rem))] lg:z-10 d[&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 dark:bg-gray-800">
+  <aside id="docs-sidebar" class="hidden lg:block lg:w-1/5 border-e border-gray-200 dark:border-gray-700">
+    <div id="docs-sidebar-inner" class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden sticky z-[60] w-full bg-white pe-8 py-10 overflow-y-auto lg:block lg:translate-x-0 lg:top-12 lg:end-auto lg:bottom-0 lg:start-[max(0px,calc(50%-45rem))] lg:z-10 d[&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 dark:bg-gray-800">
 
     <!-- Nav -->
     <nav 
@@ -91,6 +91,10 @@
   </time>
 </div>
 </section>
+
+<figure>
+  <img class="lg:h-96 md:h-36 w-full object-cover object-center rounded-lg" src="/img/note/thumbnail/ubuntu.png" alt="blog">
+</figure>
 
 <p>Ubuntu 22.04.4 にSATA接続のSSDを増設しました。
 データを保存できるストレージとして使用できるようにしてみます。</p>
