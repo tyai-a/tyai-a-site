@@ -15,6 +15,7 @@
         <a class="font-bold dark:text-white hover:text-gray-500 dark:hover:text-gray-400 sm:py-6" href="/about/">私について</a>
         <a class="font-bold dark:text-white hover:text-gray-500 dark:hover:text-gray-400 sm:py-6" href="/work/">制作物</a>
         <a class="font-bold dark:text-white hover:text-gray-500 dark:hover:text-gray-400 sm:py-6" href="/note/">備忘録</a>
+        <a class="font-bold dark:text-white hover:text-gray-500 dark:hover:text-gray-400 sm:py-6" href="/contact/">お問い合わせ</a>
 
         <!-- <div class="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none] sm:[--trigger:hover] sm:py-4">
           <button type="button" class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500">
