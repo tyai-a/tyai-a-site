@@ -16,6 +16,6 @@
 <meta property="og:image" content="/common/img/ogp.png">
 <meta property="og:locale" content="ja_JP">
 <!-- css -->
-<link href="/css/style.css" rel="stylesheet">
+<link href="/css/style.css?240421-0940" rel="stylesheet">
 <!-- js -->
 <script src="/js/script.js" defer></script>
