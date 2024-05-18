@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <?php
-  $title = 'お問い合わせ | Tyai-a.site';
+  $title = '送信確認 | お問い合わせ | Tyai-a.site';
   $description = 'サイトの管理者にお問い合わせ';
   $url = 'work/'; 
   $is_home = true; // トップページのみ記載
@@ -28,8 +29,16 @@
         <path d="m9 18 6-6-6-6"></path>
       </svg>
     </li>
-    <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200" aria-current="page">
+    <li class="inline-flex items-center">
+      <a class="flex items-center text-xs text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:focus:text-blue-500" href="/contact/">
       お問い合わせ
+      </a>
+      <svg class="flex-shrink-0 mx-2 overflow-visible size-4 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"></path>
+      </svg>
+    </li>
+    <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200" aria-current="page">
+      送信確認
     </li>
   </ol>
 </div>
@@ -45,7 +54,7 @@
         <!-- Item -->
         <li class="md:shrink md:basis-0 flex-1 group flex gap-x-2 md:block">
           <div class="min-w-7 min-h-7 flex flex-col items-center md:w-full md:inline-flex md:flex-wrap md:flex-row text-xs align-middle">
-            <span class="size-7 flex justify-center items-center flex-shrink-0 bg-blue-600 font-medium text-white rounded-full">
+            <span class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full dark:bg-neutral-700 dark:text-white">
               1
             </span>
             <div class="mt-2 w-px h-full md:mt-0 md:ms-2 md:w-full md:h-px md:flex-1 bg-gray-200 group-last:hidden dark:bg-neutral-700"></div>
@@ -64,7 +73,7 @@
         <!-- Item -->
         <li class="md:shrink md:basis-0 flex-1 group flex gap-x-2 md:block">
           <div class="min-w-7 min-h-7 flex flex-col items-center md:w-full md:inline-flex md:flex-wrap md:flex-row text-xs align-middle">
-            <span class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full dark:bg-neutral-700 dark:text-white">
+            <span class="size-7 flex justify-center items-center flex-shrink-0 bg-blue-600 font-medium text-white rounded-full">
               2
             </span>
             <div class="mt-2 w-px h-full md:mt-0 md:ms-2 md:w-full md:h-px md:flex-1 bg-gray-200 group-last:hidden dark:bg-neutral-700"></div>
@@ -101,27 +110,33 @@
       </ul>
 
       <div class="mt-3">
-        <form action="confirm.php" method="post">
-          <div class="mb-4 sm:mb-8">
+        <form>
+          <div class="mb-4 sm:mb-8 pb-4 border-b border-gray-200 dark:border-neutral-700">
             <label for="hs-feedback-post-comment-name-1" class="block mb-2 text-sm font-medium dark:text-white">お名前</label>
-            <input type="text" id="hs-feedback-post-comment-name-1" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="お名前">
-          </div>
-
-          <div class="mb-4 sm:mb-8">
-            <label for="hs-feedback-post-comment-email-1" class="block mb-2 text-sm font-medium dark:text-white">メールアドレス</label>
-            <input type="email" id="hs-feedback-post-comment-email-1" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="メールアドレス">
-          </div>
-
-          <div>
-            <label for="hs-feedback-post-comment-textarea-1" class="block mb-2 text-sm font-medium dark:text-white">お問い合わせ内容</label>
             <div class="mt-1">
-              <textarea id="hs-feedback-post-comment-textarea-1" name="hs-feedback-post-comment-textarea-1" rows="3" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder=""></textarea>
+            テキストテキストテキストテキストテキストテキスト
             </div>
           </div>
 
-          <div class="mt-6 grid">
-            <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">確認画面へ</button>
+          <div class="mb-4 sm:mb-8 pb-4 border-b border-gray-200 dark:border-neutral-700">
+            <label for="hs-feedback-post-comment-email-1" class="block mb-2 text-sm font-medium dark:text-white">メールアドレス</label>
+            <div class="mt-1">
+            テキストテキストテキストテキストテキストテキスト
+            </div>
           </div>
+
+          <div class="pb-4 border-b border-gray-200 dark:border-neutral-700">
+            <label for="hs-feedback-post-comment-textarea-1" class="block mb-2 text-sm font-medium dark:text-white">お問い合わせ内容</label>
+            <div class="mt-1">
+            テキストテキストテキストテキストテキストテキストテキスト
+            </div>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <button type="button" onclick="history.back()" class="w-full py-3 px-4 inline-flex justify-center items-center text-sm font-semibold rounded-lg border border-transparent bg-gray-100 font-medium text-gray-800 hover:bg-gray-200 dark:bg-neutral-700 dark:text-white dark:hover:bg-neutral-600  disabled:opacity-50 disabled:pointer-events-none">入力画面に戻る</button>
+            <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">送信する</button>
+          </div>
+
         </form>
       </div>
     </div>
