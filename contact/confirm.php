@@ -1,3 +1,32 @@
+<?php
+  session_cache_limiter('none'); //不要なHTTPヘッダを出力しない
+  session_start(); //セッション開始
+  // print_r($_SESSION);
+
+  if( isset($_POST['token']) ) {
+    //POSTされたトークンを変数にセット
+    $token = $_POST['token'];
+  }
+  
+  if( isset($_SESSION['token']) ) {
+    //セッション変数のトークンを変数にセット
+    $session_token = $_SESSION['token'];
+  }
+
+  unset($_SESSION['token']); //セッション変数のトークンを削除
+
+  if ( ( empty($token) || $token != $session_token) ) {
+    //トークンの判定
+    $_SESSION['error-msg'] = '不正なリクエストです。'; //セッション変数にエラーメッセージを設定
+    header('Location: /contact/' ); //フォームのTOPページに遷移
+    exit;
+  }
+  $_SESSION['token'] = $token; //セッション変数にトークンをセット
+
+  function h( $str ) {
+    return htmlspecialchars( $str, ENT_QUOTES, 'UTF-8' );
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -110,25 +139,26 @@
       </ul>
 
       <div class="mt-3">
+
         <form>
           <div class="mb-4 sm:mb-8 pb-4 border-b border-gray-200 dark:border-neutral-700">
             <label for="hs-feedback-post-comment-name-1" class="block mb-2 text-sm font-medium dark:text-white">お名前</label>
             <div class="mt-1">
-            テキストテキストテキストテキストテキストテキスト
+            <?php echo h($_POST['name']);?>
             </div>
           </div>
 
           <div class="mb-4 sm:mb-8 pb-4 border-b border-gray-200 dark:border-neutral-700">
             <label for="hs-feedback-post-comment-email-1" class="block mb-2 text-sm font-medium dark:text-white">メールアドレス</label>
             <div class="mt-1">
-            テキストテキストテキストテキストテキストテキスト
+            <?php echo h($_POST['email']);?>
             </div>
           </div>
 
           <div class="pb-4 border-b border-gray-200 dark:border-neutral-700">
             <label for="hs-feedback-post-comment-textarea-1" class="block mb-2 text-sm font-medium dark:text-white">お問い合わせ内容</label>
             <div class="mt-1">
-            テキストテキストテキストテキストテキストテキストテキスト
+            <?php echo h($_POST['message']);?>
             </div>
           </div>
 

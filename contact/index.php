@@ -1,3 +1,10 @@
+<?php
+  session_cache_limiter('none'); //不要なHTTPヘッダを出力しない
+  $_SESSION = array(); //セッション変数の初期化
+  session_start(); //セッションの開始
+  // print_r($_SESSION);
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -103,24 +110,64 @@
       <div class="mt-3">
         <form action="confirm.php" method="post">
           <div class="mb-4 sm:mb-8">
-            <label for="hs-feedback-post-comment-name-1" class="block mb-2 text-sm font-medium dark:text-white">お名前</label>
-            <input type="text" id="hs-feedback-post-comment-name-1" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="お名前">
+            <label
+              for="name"
+              class="block mb-2 text-sm font-medium dark:text-white"
+            >お名前</label>
+            <input 
+              type="text"
+              id="name"
+              name="name"
+              placeholder="お名前"
+              class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+            >
           </div>
 
           <div class="mb-4 sm:mb-8">
-            <label for="hs-feedback-post-comment-email-1" class="block mb-2 text-sm font-medium dark:text-white">メールアドレス</label>
-            <input type="email" id="hs-feedback-post-comment-email-1" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="メールアドレス">
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium dark:text-white"
+            >メールアドレス</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              id="hs-feedback-post-comment-email-1"
+              placeholder="メールアドレス"
+              class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+            >
           </div>
 
           <div>
-            <label for="hs-feedback-post-comment-textarea-1" class="block mb-2 text-sm font-medium dark:text-white">お問い合わせ内容</label>
+            <label
+              for="hs-feedback-post-comment-textarea-1"
+              class="block mb-2 text-sm font-medium dark:text-white"
+            >お問い合わせ内容</label>
             <div class="mt-1">
-              <textarea id="hs-feedback-post-comment-textarea-1" name="hs-feedback-post-comment-textarea-1" rows="3" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder=""></textarea>
+              <textarea
+                id="message"
+                name="message"
+                rows="3"
+                placeholder=""
+                class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+              ></textarea>
             </div>
           </div>
 
           <div class="mt-6 grid">
+            <?php
+              $token = uniqid('', true); //トークンの生成
+              $_SESSION['token'] = $token; //セッション変数にトークンをセット
+            ?>
+
+            <input type="hidden" name="token" value="<?php echo $token; ?>">
             <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">確認画面へ</button>
+
+          <?php if( isset($_SESSION['error-msg']) ) : ?>
+              <p class="error"><?php print $_SESSION['error-msg']; ?></p>
+              <?php unset($_SESSION['error-msg']); //セッション変数内のエラーの削除 ?>
+            <?php endif; ?>
+            
           </div>
         </form>
       </div>
