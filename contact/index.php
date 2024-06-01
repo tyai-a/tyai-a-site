@@ -45,6 +45,40 @@
 <div class="container px-5 py-16 mx-auto">
 
 <div class="mx-auto max-w-2xl">
+
+  <?php if( isset($_SESSION['error-msg']) ) : ?>
+    <div class="bg-red-50 border border-red-200 text-sm text-red-800 rounded-lg p-4 mb-5 dark:bg-red-800/10 dark:border-red-900 dark:text-red-500" role="alert">
+    <div class="flex">
+      <div class="flex-shrink-0">
+        <svg class="flex-shrink-0 size-4 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="m15 9-6 6"></path>
+          <path d="m9 9 6 6"></path>
+        </svg>
+      </div>
+      <div class="ms-4">
+        <h3 class="text-sm font-semibold">
+          エラーが発生しました。
+        </h3>
+        <div class="mt-2 text-sm text-red-700 dark:text-red-400">
+          <ul class="list-disc space-y-1 ps-5">
+            <li>
+              <?php print $_SESSION['error-msg']; ?>
+            </li>
+            <?php if( isset($_SESSION['error-msg-validate']) ) : ?>
+              <li><?php print $_SESSION['error-msg-validate']; ?></li>
+            <?php endif; ?>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php unset($_SESSION['error-msg']); //セッション変数内のエラーの削除 ?>
+  <?php unset($_SESSION['error-msg-validate']); //セッション変数内のエラーの削除 ?>
+  <?php endif; ?>
+    
+
+    
     <!-- Card -->
     <div class="p-4 relative z-10 bg-white border rounded-xl md:p-10 dark:bg-neutral-900 dark:border-neutral-700">
 
@@ -162,11 +196,6 @@
 
             <input type="hidden" name="token" value="<?php echo $token; ?>">
             <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">確認画面へ</button>
-
-          <?php if( isset($_SESSION['error-msg']) ) : ?>
-              <p class="error"><?php print $_SESSION['error-msg']; ?></p>
-              <?php unset($_SESSION['error-msg']); //セッション変数内のエラーの削除 ?>
-            <?php endif; ?>
             
           </div>
         </form>

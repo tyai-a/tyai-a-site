@@ -1,31 +1,77 @@
 <?php
   session_cache_limiter('none'); //不要なHTTPヘッダを出力しない
   session_start(); //セッション開始
-  // print_r($_SESSION);
-
+  $_SESSION['error-msg-validate'] = array();
+  
+  //POSTされたトークンを変数にセット
   if( isset($_POST['token']) ) {
-    //POSTされたトークンを変数にセット
     $token = $_POST['token'];
   }
   
+  //セッション変数のトークンを変数にセット
   if( isset($_SESSION['token']) ) {
-    //セッション変数のトークンを変数にセット
     $session_token = $_SESSION['token'];
   }
 
-  unset($_SESSION['token']); //セッション変数のトークンを削除
-
+  //セッション変数のトークンを削除
+  unset($_SESSION['token']);
+  
+  //トークンの判定
   if ( ( empty($token) || $token != $session_token) ) {
-    //トークンの判定
     $_SESSION['error-msg'] = '不正なリクエストです。'; //セッション変数にエラーメッセージを設定
     header('Location: /contact/' ); //フォームのTOPページに遷移
     exit;
   }
   $_SESSION['token'] = $token; //セッション変数にトークンをセット
-
+  
+  // エスケープ関数
   function h( $str ) {
     return htmlspecialchars( $str, ENT_QUOTES, 'UTF-8' );
   }
+
+  //件名
+  $subjectAdmin = '';
+  $subjectUser = '';
+  $date_now = date("Y/m/d");
+  $errorFlag = 0;
+  
+  // バリデート
+	$reg_email = "/^([a-zA-Z0-9])+([a-zA-Z0-9._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9._-]+)+$/";
+  if(($_POST['email'] == "")){
+    array_push($_SESSION['error-msg-validate'], "メールアドレスを入力してください。");
+    $errorFlag = 1;
+  }
+  else if (!preg_match($reg_email, $_POST['email'])) {
+    array_push($_SESSION['error-msg-validate'], "メールアドレスをもう一度お確かめください。");
+    $errorFlag = 1;
+  }		
+
+  // 隠しパラメータセット
+  $send_hidden = <<<EOF
+  <input type="hidden" name="step" value="2" />
+  <input type="hidden" name="day_stmp" value="{$date_now}" />
+
+  <input type="hidden" name="name" value="{$_POST['name']}" />
+  <input type="hidden" name="email" value="{$_POST['email']}" />
+  <input type="hidden" name="message" value="{$_POST['message']}" />
+  EOF;
+  
+  // メール送信
+  function sendMail(){
+    // 個別Ver
+    $to = "example@gmail.com";
+    $toName = "宛名";
+    $subject = "件名";
+    $body = "ここに内容をいれます";
+    $from = "from@example.com";
+    $fromName = "配信元日本語名";
+  }
+
+  if(isset($_POST["step"]) == "2"){
+    sendMail();
+  }
+
+  // print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -140,29 +186,29 @@
 
       <div class="mt-3">
 
-        <form>
+        <form action="confirm.php" method="POST">
           <div class="mb-4 sm:mb-8 pb-4 border-b border-gray-200 dark:border-neutral-700">
             <label for="hs-feedback-post-comment-name-1" class="block mb-2 text-sm font-medium dark:text-white">お名前</label>
-            <div class="mt-1">
-            <?php echo h($_POST['name']);?>
-            </div>
+            <div class="mt-1"><?php echo h(nl2br($_POST['name']));?></div>
           </div>
 
           <div class="mb-4 sm:mb-8 pb-4 border-b border-gray-200 dark:border-neutral-700">
             <label for="hs-feedback-post-comment-email-1" class="block mb-2 text-sm font-medium dark:text-white">メールアドレス</label>
-            <div class="mt-1">
-            <?php echo h($_POST['email']);?>
-            </div>
+            <div class="mt-1"><?php echo h(nl2br($_POST['email']));?></div>
           </div>
 
           <div class="pb-4 border-b border-gray-200 dark:border-neutral-700">
             <label for="hs-feedback-post-comment-textarea-1" class="block mb-2 text-sm font-medium dark:text-white">お問い合わせ内容</label>
-            <div class="mt-1">
-            <?php echo h($_POST['message']);?>
-            </div>
+            <div class="mt-1"><?php echo h(nl2br($_POST['message']));?></div>
           </div>
 
           <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <?php
+              $token = uniqid('', true); //トークンの生成
+              $_SESSION['token'] = $token; //セッション変数にトークンをセット
+            ?>
+            <?php echo($send_hidden); ?>
+            <input type="hidden" name="token" value="<?php echo $token; ?>">
             <button type="button" onclick="history.back()" class="w-full py-3 px-4 inline-flex justify-center items-center text-sm font-semibold rounded-lg border border-transparent bg-gray-100 font-medium text-gray-800 hover:bg-gray-200 dark:bg-neutral-700 dark:text-white dark:hover:bg-neutral-600  disabled:opacity-50 disabled:pointer-events-none">入力画面に戻る</button>
             <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">送信する</button>
           </div>

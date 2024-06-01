@@ -1,29 +1,3 @@
-<?php
-  session_cache_limiter('none'); //不要なHTTPヘッダを出力しない
-  session_start(); //セッション開始
-
-  if( isset($_POST['token']) ) {
-    //POSTされたトークンを変数にセット
-    $token = $_POST['token'];
-  }
-  
-  if( isset($_SESSION['token']) ) {
-    //セッション変数のトークンを変数にセット
-    $session_token = $_SESSION['token'];
-  }
-
-  unset($_SESSION['token']); //セッション変数のトークンを削除
-
-  if ( ( empty($token) || $token != $session_token) ) {
-    //トークンの判定
-    $_SESSION['error-msg'] = '不正なリクエストです。'; //セッション変数にエラーメッセージを設定
-    header('Location: /contact/' ); //フォームのTOPページに遷移
-    exit;
-  }
-  
-  $_SESSION['token'] = $token; //セッション変数にトークンをセット
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
